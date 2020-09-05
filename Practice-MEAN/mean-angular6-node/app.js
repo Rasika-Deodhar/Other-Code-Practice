@@ -6,6 +6,8 @@ var logger = require('morgan');
 
 var apiRouter = require('./routes/book');
 
+const cors = require("cors");
+
 var app = express();
 
 app.use(logger('dev'));
@@ -14,6 +16,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'dist/mean-angular6')));
 app.use('/', express.static(path.join(__dirname, 'dist/mean-angular6')));
 app.use('/api', apiRouter);
+app.use(cors());
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

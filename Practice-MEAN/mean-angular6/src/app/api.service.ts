@@ -6,7 +6,7 @@ import { catchError, tap, map } from 'rxjs/operators';
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
-const apiUrl = "/api";
+const apiUrl = "https://cors-anywhere.herokuapp.com/localhost:3000/api";
 
 @Injectable({
   providedIn: 'root'
