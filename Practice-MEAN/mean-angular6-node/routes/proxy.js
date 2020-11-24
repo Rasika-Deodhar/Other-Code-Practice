@@ -1,8 +1,9 @@
 var HttpsProxyAgent = require('https-proxy-agent');
 var proxyConfig = [{
   context: '/api',
-  target: 'http://localhost.com:3000/api',
-  secure: false
+  target: 'http://localhost:3000/api',
+  secure: false,
+  changeOrigin: true
 }];
 
 function setupForCorporateProxy(proxyConfig) {
@@ -10,7 +11,7 @@ function setupForCorporateProxy(proxyConfig) {
   if (proxyServer) {
     var agent = new HttpsProxyAgent(proxyServer);
     console.log('Using corporate proxy server: ' + proxyServer);
-    proxyConfig.forEach(function(entry) {
+    proxyConfig.forEach(function (entry) {
       entry.agent = agent;
     });
   }

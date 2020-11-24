@@ -6,7 +6,7 @@ import { catchError, tap, map } from 'rxjs/operators';
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
-const apiUrl = "https://cors-anywhere.herokuapp.com/localhost:3000/api";
+const apiUrl = "http://localhost:3000/api";
 
 @Injectable({
   providedIn: 'root'
@@ -48,14 +48,14 @@ export class ApiService {
       catchError(this.handleError));
   }
   
-  postBook(data): Observable<any> {
+  postBook(data:any): Observable<any> {
     return this.http.post(apiUrl, data, httpOptions)
       .pipe(
         catchError(this.handleError)
       );
   }
   
-  updateBook(data): Observable<any> {
+  updateBook(data:any): Observable<any> {
     return this.http.put(apiUrl, data, httpOptions)
       .pipe(
         catchError(this.handleError)
