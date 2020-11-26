@@ -4,7 +4,8 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 
-var apiRouter = require('./routes/book');
+var book = require('./routes/book');
+var watch = require('./routes/watch');
 
 var app = express();
 
@@ -13,7 +14,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'dist/mean-angular6')));
 app.use('/', express.static(path.join(__dirname, 'dist/mean-angular6')));
-app.use('/book', apiRouter);
+app.use('/book', book);
+app.use('/watch', watch);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

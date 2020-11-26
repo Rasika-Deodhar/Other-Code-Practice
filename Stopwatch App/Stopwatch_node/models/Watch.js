@@ -1,8 +1,8 @@
 var mongoose = require('mongoose');
 var WatchSchema = new mongoose.Schema({
-    startTime: any,
-    stopTime: any,
-    timeLapse: any
+    startTime: String,
+    stopTime: String,
+    timeLapse: String
 });
 
 module.exports = mongoose.model('Watch', WatchSchema);
