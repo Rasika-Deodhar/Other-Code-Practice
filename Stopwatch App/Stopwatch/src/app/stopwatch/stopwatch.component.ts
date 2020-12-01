@@ -34,6 +34,18 @@ export class StopwatchComponent implements OnInit {
 
   stop() {
     this.myDate.unsubscribe();
+    console.log(this.time_lapse);
+  }
+
+  resume() {
+    this.myDate = timer(1000, 1000)
+      .pipe(
+        map((x: number) => {
+          const newDate = new Date(this.time_lapse.getTime());
+          newDate.setSeconds(newDate.getSeconds() + x);
+          return newDate;
+        })
+      ).subscribe(t => this.time_lapse = t);
   }
 
 }
