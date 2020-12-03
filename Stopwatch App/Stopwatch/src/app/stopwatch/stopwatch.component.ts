@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
 })
 export class StopwatchComponent implements OnInit {
 
-  start_clock = "";
+  clock_text = "start";
   startDate = new Date('2020-03-08 00:00:00');
   time_lapse: any;
   myDate: any;
@@ -20,7 +20,7 @@ export class StopwatchComponent implements OnInit {
   }
 
   start() {
-    this.start_clock = "Hello";
+    this.clock_text = "stopOrClear";
     this.myDate = timer(1000, 1000)
       .pipe(
         map((x: number) => {
@@ -29,15 +29,17 @@ export class StopwatchComponent implements OnInit {
           return newDate;
         })
       ).subscribe(t => this.time_lapse = t);
-
+        //How to stop the timer?
   }
 
   stop() {
+    this.clock_text = "resumeOrClear";
     this.myDate.unsubscribe();
-    console.log(this.time_lapse);
+    console.log(this.time_lapse.getTime());
   }
 
   resume() {
+    this.clock_text = "stopOrClear";
     this.myDate = timer(1000, 1000)
       .pipe(
         map((x: number) => {
@@ -46,6 +48,12 @@ export class StopwatchComponent implements OnInit {
           return newDate;
         })
       ).subscribe(t => this.time_lapse = t);
+  }
+
+  clear() {
+    this.clock_text = "start";
+    this.myDate.unsubscribe();
+    this.time_lapse = new Date('03-03-2003 00:00:00');
   }
 
 }
