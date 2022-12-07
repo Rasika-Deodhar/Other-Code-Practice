@@ -7,10 +7,10 @@
     "mean-angular6-node": "www.js"
   },
   "dependencies": {
-    "body-parser": "^1.19.0",
+    "body-parser": "^1.20.1",
     "cors": "^2.8.5",
     "cors-anywhere": "^0.4.1",
-    "express": "^4.17.1",
+    "express": "^4.18.2",
     "http-errors": "^1.7.3",
     "mongoose": "^5.7.12",
     "morgan": "^1.9.1",
